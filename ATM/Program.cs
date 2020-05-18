@@ -44,7 +44,7 @@ namespace ATM
                 }
                 if (selectedTransaction == 2) 
                 {
-                    userBalance = WithdrawalHandler(userBalance);
+                    userBalance = WithdrawHandler(userBalance);
                     AtmHandler(userBalance); 
                 }
                 if (selectedTransaction == 3)  
@@ -83,7 +83,17 @@ namespace ATM
             return newTotal;
         }
 
+        public static decimal WithdrawHandler(decimal currentBalance)
+        {
+            Console.WriteLine("How much would you like to withdraw?");
+            decimal withdrawTotal = decimal.Parse(Console.ReadLine());
 
+            decimal newTotal = currentBalance - withdrawTotal;
+
+            Console.WriteLine($"Your balance is now: {newTotal}");
+
+            return newTotal;
+        }
     }
 
 }
