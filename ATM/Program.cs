@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ATM
 {
@@ -43,7 +44,7 @@ namespace ATM
                 }
                 if (selectedTransaction == 2) 
                 {
-                    userBalance = WithdrawalHandler(userBalance);
+                    userBalance = WithdrawHandler(userBalance);
                     AtmHandler(userBalance); 
                 }
                 if (selectedTransaction == 3)  
@@ -66,8 +67,33 @@ namespace ATM
                 throw Arex;
             }
 
-
+            
 
         }
+
+        public static decimal DepositHandler(decimal currentBalance)
+        {
+            Console.WriteLine("How much would you like to deposit?");
+            decimal depositTotal = decimal.Parse(Console.ReadLine());
+
+            decimal newTotal = currentBalance + depositTotal;
+
+            Console.WriteLine($"Your balance is now: {newTotal}");
+
+            return newTotal;
+        }
+
+        public static decimal WithdrawHandler(decimal currentBalance)
+        {
+            Console.WriteLine("How much would you like to withdraw?");
+            decimal withdrawTotal = decimal.Parse(Console.ReadLine());
+
+            decimal newTotal = currentBalance - withdrawTotal;
+
+            Console.WriteLine($"Your balance is now: {newTotal}");
+
+            return newTotal;
+        }
     }
+
 }
