@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ATM
 {
@@ -66,8 +67,23 @@ namespace ATM
                 throw Arex;
             }
 
-
+            
 
         }
+
+        public static decimal DepositHandler(decimal currentBalance)
+        {
+            Console.WriteLine("How much would you like to deposit?");
+            decimal depositTotal = decimal.Parse(Console.ReadLine());
+
+            decimal newTotal = currentBalance + depositTotal;
+
+            Console.WriteLine($"Your balance is now: {newTotal}");
+
+            return newTotal;
+        }
+
+
     }
+
 }
